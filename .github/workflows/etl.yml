@@ -1,9 +1,4 @@
-- name: Ejecutar ETL Pipeline
-        env:
-          # Inyectamos el nuevo token único
-          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
-        run: |
-          python scripts/etl_pipeline.py
+name: tuberia del kaggle
 
 on:
   push:
@@ -29,7 +24,7 @@ jobs:
       - name: Ejecutar ETL Pipeline
         env:
           # Aquí inyectamos los GitHub Secrets al entorno de ejecución
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+          
         run: |
           python scripts/etl2kaggle_pipe_v2.py
