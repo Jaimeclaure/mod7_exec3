@@ -32,4 +32,4 @@ jobs:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          python scripts/etl_pipeline.py
+          python scripts/etl2kaggle_pipe_v2.py
