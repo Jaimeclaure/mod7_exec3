@@ -7,8 +7,8 @@ def extract():
     print("Iniciando extracción desde Kaggle...")
     os.makedirs('data/raw', exist_ok=True)
     
-    # kagglehub 
-    path = kagglehub.dataset_download("sudhanvahavekar/crop-yield-prediction-dataset")
+    # fuente del dataset de maiz
+    path = kagglehub.dataset_download("patelris/crop-yield-prediction-dataset")
     
     # copiamos el dataset a data/raw
     archivo_origen = os.path.join(path, "yield_df.csv")
