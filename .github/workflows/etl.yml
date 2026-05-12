@@ -1,0 +1,35 @@
+- name: Ejecutar ETL Pipeline
+        env:
+          # Inyectamos el nuevo token único
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          python scripts/etl_pipeline.py
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # Permite ejecución manual
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+
+      - name: Ejecutar ETL Pipeline
+        env:
+          # Aquí inyectamos los GitHub Secrets al entorno de ejecución
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          python scripts/etl_pipeline.py
