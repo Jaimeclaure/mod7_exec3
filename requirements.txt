@@ -1,2 +1,2 @@
 pandas
-kaggle
+kagglehub
